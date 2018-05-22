@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class QuickSort {
 
 	private static int[] originalArray;
+	private static int[] sortedArray;
 	
 	public static void main(String[] args) {
 		System.out.println("Quick Sort algorithm");
@@ -33,6 +34,17 @@ public class QuickSort {
 		// 2. Items to the left are smaller
 		
 		// 3. Items to the right are larger
+	}
+	
+	private static int[] quicksort(int[] inputArray) {
+		return null;
+	}
+	
+	private static int sort(int[] inputArray, int pivot, int left, int right) {
+		
+		
+		
+		return 0;
 	}
 	
 	private static void outputArrayValues(int[] array) {
