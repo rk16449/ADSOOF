@@ -20,6 +20,8 @@ public class QuickSort {
 		// Store our array values
 		originalArray = getArrayValues();
 		
+		// Output the values
+		outputArrayValues(originalArray);
 		
 		
 		// Recursive Algorithm
@@ -31,6 +33,14 @@ public class QuickSort {
 		// 2. Items to the left are smaller
 		
 		// 3. Items to the right are larger
+	}
+	
+	private static void outputArrayValues(int[] array) {
+		// Output results
+		System.out.println("Output array:");
+		for(int i=0; i<array.length; i++) {
+			System.out.println(i + "->" + array[i]);
+		}
 	}
 
 	private static int[] getArrayValues() {
@@ -68,16 +78,9 @@ public class QuickSort {
 		for(int i=0; i<ints.size(); i++) {
 			fixedArray[i] = ints.get(i);
 		}
-		
-		// Output results
-		System.out.println("Output array:");
-		for(int i=0; i<fixedArray.length; i++) {
-			System.out.println(i + "->" + fixedArray[i]);
-		}
-		
+
 		// Finish with scanner
 		scan.close();
-		
 		
 		// Return int[] array of values
 		return fixedArray;
