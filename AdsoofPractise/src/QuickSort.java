@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 // Time Complexity 
@@ -11,26 +12,15 @@ import java.util.Scanner;
 
 public class QuickSort {
 
-	
+	private static int[] originalArray;
 	
 	public static void main(String[] args) {
 		System.out.println("Quick Sort algorithm");
 		
-		
-		System.out.println("Enter an array of numbers e.g: [3, 4, 5, 6]: ");
-		
-		Scanner scan = new Scanner(System.in);
-		String values = scan.nextLine();
-		values = values.trim();
-		
-		System.out.println("You entered: " + values);
-		
-		// Remove square brackets, and break up the commas
+		// Store our array values
+		originalArray = getArrayValues();
 		
 		
-		System.out.println();
-		
-		scan.close();
 		
 		// Recursive Algorithm
 		
@@ -41,5 +31,55 @@ public class QuickSort {
 		// 2. Items to the left are smaller
 		
 		// 3. Items to the right are larger
+	}
+
+	private static int[] getArrayValues() {
+		
+		System.out.println("Enter an array of numbers e.g: [3, 4, 5, 6]: ");
+		
+		// Get the input from user
+		Scanner scan = new Scanner(System.in);
+		String values = scan.nextLine();
+		
+		// Remove square brackets and spaces, then trim whitespace
+		values = values.replace(",", " ");
+		values = values.replace("[", "");
+		values = values.replace("]", "");
+		values = values.trim();
+		
+		// Splits up the entered values
+		String[] numbers = values.split(" ");
+		
+		// Store the numbrs into a dynamic arraylist
+		ArrayList<Integer> ints = new ArrayList<Integer>();
+		try {
+			for(int i=0; i<numbers.length; i++) {
+				// Make sure we don't convert empty numbers
+				if(!numbers[i].equals("")) {
+					ints.add(Integer.parseInt(numbers[i]));
+				}
+			}
+		}catch(NumberFormatException e) {
+			e.printStackTrace();
+		}
+		
+		// Convert back the dynamic arraylist to a fixed size array
+		int[] fixedArray = new int[ints.size()];
+		for(int i=0; i<ints.size(); i++) {
+			fixedArray[i] = ints.get(i);
+		}
+		
+		// Output results
+		System.out.println("Output array:");
+		for(int i=0; i<fixedArray.length; i++) {
+			System.out.println(i + "->" + fixedArray[i]);
+		}
+		
+		// Finish with scanner
+		scan.close();
+		
+		
+		// Return int[] array of values
+		return fixedArray;
 	}
 }
