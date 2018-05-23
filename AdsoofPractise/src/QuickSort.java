@@ -24,8 +24,11 @@ public class QuickSort {
 		// Output the values
 		outputArrayValues(originalArray);
 		
-		
-		// Recursive Algorithm
+		// Quick Sort our array values
+		sortedArray = quicksort(originalArray);
+	}
+	
+	private static int[] quicksort(int[] inputArray) {
 		
 		// Quick sort = pivot
 		
@@ -34,9 +37,7 @@ public class QuickSort {
 		// 2. Items to the left are smaller
 		
 		// 3. Items to the right are larger
-	}
-	
-	private static int[] quicksort(int[] inputArray) {
+		
 		return null;
 	}
 	
