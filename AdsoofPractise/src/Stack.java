@@ -47,11 +47,12 @@ public class Stack {
 		
 	}
 	
-	public void copy() {
+	private void copy(Stack old) {
 		
 	}
 	
-	public void copyStack() {
-		
+	public void copyStack(Stack old) {
+		if(this != old)
+			copy(old);
 	}
 }
