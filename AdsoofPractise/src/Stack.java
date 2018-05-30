@@ -9,7 +9,7 @@ public class Stack {
 	
 	private int maxSize;
 	
-	private int topVariable;
+	private int topElement;
 	
 	private Data[] list;
 	
@@ -23,7 +23,10 @@ public class Stack {
 	}
 	
 	public void initializeStack() {
-		
+		for(int i=0; i<maxSize; i++) {
+			list[i] = null;
+		}
+		topElement = 0;
 	}
 	
 	public Stack() {
