@@ -7,7 +7,7 @@ public class Stack {
 	
 	private int maxSize;
 	private int topStack;
-	private Data[] stack;
+	private Data<?>[] stack;
 	
 	// Returns false if topElement is 0
 	public boolean isEmptyStack() {
@@ -54,7 +54,7 @@ public class Stack {
 		copy(newStack);
 	}
 	
-	public Data top() {
+	public Data<?> top() {
 		// Precondition: Stack exists and is not empty
 		if(isEmptyStack()) {
 			// throw exception here
@@ -65,7 +65,7 @@ public class Stack {
 	}
 	
 	// Place value onto stack
-	public void push(Data element) {
+	public void push(Data<?> element) {
 		// Precondition: Stack exists and is not full
 		
 		
