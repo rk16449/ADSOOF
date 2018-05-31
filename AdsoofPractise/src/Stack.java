@@ -1,32 +1,48 @@
+import java.util.Random;
 
 public class Stack {
 	
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
+		// Put 100 random integer values into a stack
+	
 		
+		// Random object of seed 10
+		Random generator = new Random(10);
+		
+		// Create stack of 100 spaces
+		Stack myStack = new Stack(100);
+		
+		
+		// Fill up stack with 100 random integers 
+		for(int i=0; i<100; i++) {
+			myStack.push(new Data<Integer>(generator.nextInt()));
+		}
+		
+		// Give us a copy of the most top value
+		System.out.println(myStack.top().getValue());	
 	}
 	
 	private int maxSize;
-	private int topStack;
+	private int top;
 	private Data<?>[] stack;
 	
 	// Returns false if topElement is 0
 	public boolean isEmptyStack() {
-		return topStack == 0;
+		return top == 0;
 	}
 	
 	public boolean isStackFull() {
 		// Determine whether the stack is full 
-		
 		// Postcondition: returns true if the stack is empty, false otherwise
-		
-		return topStack == maxSize;
+		return top == maxSize;
 	}
 	
 	public void initializeStack() {
 		for(int i=0; i<maxSize; i++) {
 			stack[i] = null;
 		}
-		topStack = 0;
+		top = 0;
 	}
 	
 	// Default constructor
@@ -34,7 +50,7 @@ public class Stack {
 		// Create array size 16
 		// Postcondition: The variable list contains the base of the array, topElement = 0 and maxSize = 16
 		maxSize = 16;
-		topStack = 0;
+		top = 0;
 		stack = new Data[maxSize];
 	}
 	
@@ -45,7 +61,7 @@ public class Stack {
 			maxSize = size;
 		}
 		
-		topStack = 0;
+		top = 0;
 		stack = new Data[maxSize];
 	}
 	
@@ -54,45 +70,60 @@ public class Stack {
 		copy(newStack);
 	}
 	
-	public Data<?> top() {
+	public Data<?> top() throws StackUnderflowException{
 		// Precondition: Stack exists and is not empty
 		if(isEmptyStack()) {
 			// throw exception here
+			throw new StackUnderflowException();
 		}
 			
 		// Postcondition: If stack empty throw exception, otherwise reference to a copy of te top element
-		return stack[topStack-1].copyMe();
+		return stack[top-1].copyMe();
 	}
 	
 	// Place value onto stack
-	public void push(Data<?> element) {
+	public void push(Data<?> element) throws StackOverflowException {
 		// Precondition: Stack exists and is not full
-		
-		
-		// Postcondition: The stack is changed and new item is added to the top
-		
 		if(isStackFull()) {
 			// throw exception here
+			throw new StackOverflowException();
 		}
 		
-		stack[topStack] = element.copyMe();
+		// Postcondition: The stack is changed and new item is added to the top
+		stack[top] = element.copyMe();
+		top++;
+	}
+	
+	/**
+	 * Method to resize the stack in case of a StackOverflow
+	 * @param size
+	 */
+	public void resize(int size) {
 		
-		topStack++;
+		Data<?>[] newStack = new Data[size];
+		
+		for(int i=0; i<stack.length; i++) {
+			newStack[i] = stack[i];
+			
+			// update alias
+			stack = newStack;
+		}
+		
+		// change maxSize
+		maxSize = size;
 	}
 	
 	// Remove element from stack
-	public void pop() {
+	public void pop() throws StackUnderflowException{
 		// Precondition: The stack exists and is not empty
 		if(isEmptyStack()) {
 			//throw exception here
+			throw new StackUnderflowException();
 		}
-		
-		
-		
 		// Postcondition: The stack is changed and the top element is removed from the stack.
 		// If the stack is empty throw exception
-		topStack--;
-		stack[topStack] = null;
+		top--;
+		stack[top] = null;
 	}
 	
 	private void copy(Stack old) {
@@ -100,12 +131,12 @@ public class Stack {
 		System.gc();
 		
 		maxSize = old.maxSize;
-		topStack = old.topStack;
+		top = old.top;
 		
 		stack = new Data[maxSize];
 		
 		// copy old stack into this stack
-		for(int i=0; i<topStack; i++) {
+		for(int i=0; i<top; i++) {
 			stack[i] = old.stack[i].copyMe();
 		}
 	}

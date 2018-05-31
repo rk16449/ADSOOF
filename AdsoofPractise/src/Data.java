@@ -1,15 +1,22 @@
 
 public class Data<T> {
 	
-	public T variable;
+	private T value;
 
+	public T getValue() {
+		return this.value;
+	}
 	
 	public Data<T>copyMe() {
 		return new Data<T>(this);
 	}
 	
+	public Data(T var) {
+		this.value = var;
+	}
+	
 	public Data(Data<T> old) {
 		// Copy over any variables etc here
-		this.variable = old.variable;
+		this.value = old.value;
 	}
 }
