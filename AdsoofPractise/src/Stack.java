@@ -11,7 +11,7 @@ public class Stack {
 	
 	// Returns false if topElement is 0
 	public boolean isEmptyStack() {
-		return topStack != 0;
+		return topStack == 0;
 	}
 	
 	public boolean isStackFull() {
