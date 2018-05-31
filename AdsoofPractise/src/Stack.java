@@ -1,21 +1,17 @@
 
 public class Stack {
-
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
 	}
 	
-	
 	private int maxSize;
-	
 	private int topElement;
-	
 	private Data[] list;
 	
-	
-	public void isEmptyStack() {
-		
+	// Returns false if topElement is 0
+	public boolean isEmptyStack() {
+		return topElement != 0;
 	}
 	
 	public void isFullStack() {
@@ -29,8 +25,9 @@ public class Stack {
 		topElement = 0;
 	}
 	
-	public Stack() {
-		
+	public Stack(int _stackSize) {
+		this.maxSize = _stackSize;
+		this.initializeStack();
 	}
 	
 	// Copy constructor
@@ -42,10 +39,12 @@ public class Stack {
 		
 	}
 	
-	public void push() {
+	// Place value onto stack
+	public void push(Data element) {
 		
 	}
 	
+	// Remove element from stack
 	public void pop() {
 		
 	}
