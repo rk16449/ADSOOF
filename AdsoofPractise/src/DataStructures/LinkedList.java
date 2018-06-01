@@ -1,3 +1,5 @@
+package DataStructures;
+
 public class LinkedList<E> {
 	
 	class Cell<T>{
