@@ -17,6 +17,10 @@ public class Data<T> {
 		this.value = var;
 	}
 	
+	/**
+	 * Copy constructor
+	 * @param old
+	 */
 	public Data(Data<T> old) {
 		// Copy over any variables etc here
 		this.value = old.value;
