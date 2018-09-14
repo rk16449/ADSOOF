@@ -2,8 +2,8 @@ package dataStructures;
 
 import java.util.Random;
 
-import Exceptions.StackOverflowException;
-import Exceptions.StackUnderflowException;
+import exceptions.StackOverflowException;
+import exceptions.StackUnderflowException;
 
 public class Stack {
 
