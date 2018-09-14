@@ -1,5 +1,7 @@
 package dataStructures;
 
+import java.lang.reflect.Array;
+
 public class  SingleHashTable <T> {
 
 	// Generic HashTable without separate chaining (no linked lists)
@@ -16,11 +18,17 @@ public class  SingleHashTable <T> {
 	private int arraySize;
 	
 	
-	public <T> SingleHashTable(int size) {
+	@SuppressWarnings("unchecked")
+	public SingleHashTable(Class<T> type, int size) {
+		
 		arraySize = getNextPrime(size);
+		
+		// Initialize array with the class type
+		internalArray = (T[]) Array.newInstance(type, size);
 		
 		System.out.println("Array size is set to: " + arraySize);
 	}
+	
 	
 	// returns the next available prime number
 	private int getNextPrime(int size) {
@@ -49,5 +57,13 @@ public class  SingleHashTable <T> {
 		}
 		// Must be prime
 		return true;
+	}
+	
+	public int getArraySize() {
+		return this.arraySize;
+	}
+	
+	public int getCount() {
+		return this.count;
 	}
 }

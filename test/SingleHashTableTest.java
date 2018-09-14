@@ -9,8 +9,8 @@ class SingleHashTableTest {
 	@Test
 	void testConstructor() {
 		
-		// Setup Hash Table
-		SingleHashTable singleHT = new SingleHashTable(100);
+		// Setup Hash Table of 100 string objects
+		SingleHashTable<String> singleHT = new SingleHashTable<String>(String.class, 100);
 		
 	}
 
