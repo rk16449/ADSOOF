@@ -29,6 +29,24 @@ public class  SingleHashTable <T> {
 		System.out.println("Array size is set to: " + arraySize);
 	}
 	
+	// inserts a generic object into the generic array
+	public void insert(T object) {
+		
+		int hashIndex = hashIndexOne(object);
+		
+		while(true) {
+			
+			// Free space found!
+			if(internalArray[hashIndex] == null) {
+				internalArray[hashIndex] = object;
+				break;
+			}
+			
+			// Else use the step size
+		}
+		
+	}
+	
 	
 	// our ideal index
 	private int hashIndexOne(T object) {
