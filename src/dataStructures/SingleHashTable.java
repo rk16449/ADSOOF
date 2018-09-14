@@ -30,6 +30,18 @@ public class  SingleHashTable <T> {
 	}
 	
 	
+	// our ideal index
+	private int hashIndexOne(T object) {
+		
+		int hashVal = object.hashCode() % arraySize;
+		
+		// add array size to negative values
+		if(hashVal < 0) hashVal += arraySize;
+		
+		return hashVal;
+	}
+	
+	
 	// returns the next available prime number
 	private int getNextPrime(int size) {
 		
