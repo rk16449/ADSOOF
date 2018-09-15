@@ -53,18 +53,19 @@ public class  SingleHashTable <T> {
 	public void resize(int size) {
 		
 		// Check if our count variable is bigger
-		if(count >= size) throw new IllegalArgumentException("Hash table must be able to fit previous elements!");
+		if(size < count) throw new IllegalArgumentException("Hash table must be able to fit previous elements!");
 		
-		// Create the new size and array
+		// Create the new size and copy array
 		int newSize = getNextPrime(size);
-		
-		T[] newArray = (T[]) Array.newInstance(internalType, newSize + 1);
 		T[] copyArray = (T[]) Array.newInstance(internalType, newSize + 1);
 		
 		// Copy all objects in internalArray into newArray
 		for(int i=0; i<arraySize; i++) {
 			copyArray[i] = internalArray[i];
 		}
+		
+		// Blank T[] array to store values into
+		T[] newArray = (T[]) Array.newInstance(internalType, newSize + 1);
 		
 		// Delete current values by assigning internal Array as new array
 		internalArray = newArray;
@@ -143,6 +144,10 @@ public class  SingleHashTable <T> {
 	
 	public int getCount() {
 		return this.count;
+	}
+	
+	public Class<T> getType(){
+		return internalType;
 	}
 
 	// our ideal index
