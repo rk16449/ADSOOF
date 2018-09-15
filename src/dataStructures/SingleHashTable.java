@@ -23,10 +23,11 @@ public class  SingleHashTable <T> {
 		
 		arraySize = getNextPrime(size);
 		
-		// Initialize array with the class type
-		internalArray = (T[]) Array.newInstance(type, size);
+		// Initialize array with the class type (+1) needed to keep array size correct
+		internalArray = (T[]) Array.newInstance(type, size + 1);
 		
 		System.out.println("Array size is set to: " + arraySize);
+		System.out.println("Actual array size is set to: " + internalArray.length);
 	}
 	
 	public void delete(T object) {
@@ -66,19 +67,32 @@ public class  SingleHashTable <T> {
 	}
 	
 	// inserts a generic object into the generic array
-	public void insert(T object) {
+	public void insert(T object) throws IndexOutOfBoundsException{
+		
+		
+		System.out.println("Count: " + count);
+		System.out.println("Array Size: " + arraySize);
 		
 		// checks we haven't filled up the array
-		if(count >= arraySize) return;
+		if(count >= arraySize) {
+			throw new IndexOutOfBoundsException("Hash Table is full!");
+		}
 		
 		int hashIndex = hashIndexOne(object);
 		int step = hashIndexTwo(object);
 		
 		
+		
+		System.out.println("Hash index found: " + hashIndex);
+		
+		
+		// If this isn't an empty node, move by a step until we find a free node
 		while(internalArray[hashIndex] != null) {
 			hashIndex += step;
 			hashIndex %= arraySize;
 		}
+		
+		
 		
 		
 		// Insert it

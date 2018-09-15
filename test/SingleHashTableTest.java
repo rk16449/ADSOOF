@@ -1,13 +1,20 @@
+import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.Rule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.rules.ExpectedException;
 
 import dataStructures.SingleHashTable;
 
 class SingleHashTableTest {
 	
 	SingleHashTable<String> singleHT;
+	
+	@Rule
+	public ExpectedException exception = ExpectedException.none();
+	
 	
 	@BeforeEach
 	public void beforeEach() {
@@ -39,6 +46,17 @@ class SingleHashTableTest {
 		singleHT.delete(word);
 		
 		assertEquals(false, singleHT.find(word));
+	}
+	
+	@Test
+	void throwsIndexOutOfBoundsOnHashTableFull() {
+		
+		// Tests the index out of bounds if we try to insert more than the hash table has
+		Throwable exception = assertThrows(IndexOutOfBoundsException.class, () -> {
+			for(int i=0; i<singleHT.getArraySize() + 100; i++) {
+				singleHT.insert("Hello" + i);
+			}
+	    });
 	}
 
 }
