@@ -57,6 +57,7 @@ public class  SingleHashTable <T> {
 		
 		// Create the new size and array
 		int newSize = getNextPrime(size);
+		
 		T[] newArray = (T[]) Array.newInstance(internalType, newSize + 1);
 		T[] copyArray = (T[]) Array.newInstance(internalType, newSize + 1);
 		
@@ -67,10 +68,12 @@ public class  SingleHashTable <T> {
 		
 		// Delete current values by assigning internal Array as new array
 		internalArray = newArray;
+		arraySize = newSize;
+		count = 0;
 		
 		// Insert all the values back in
 		for(int i=0; i<copyArray.length; i++) {
-			insert(copyArray[i]);
+			if(copyArray[i] != null) insert(copyArray[i]);
 		}
 	}
 	
