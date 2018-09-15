@@ -28,20 +28,19 @@ public class LinkedList<E> {
 
 	public static void main(String[] args) {
 		// Create a Linked List
-		LinkedList<Object> integerList = createLinkedList(new int[]{4, 5, 6, 4});
+		LinkedList<Integer> integerList = createLinkedList(new Integer[]{4, 5, 6, 4});
 	}
 	
 	// Creates and returns a T linked list
-	public static <T> LinkedList<T> createLinkedList(int[] vals){
+	public static <T> LinkedList<T> createLinkedList(T[] vals){
 		
 		LinkedList<T> list = empty();
 		
 		for(int i=0; i<vals.length; i++) {
-			//list = list.cons( (int)vals[i]);
+			list = list.cons(vals[i]);
 		}
 		
 		return list;
-		
 	}
 
 }
