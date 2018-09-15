@@ -36,6 +36,27 @@ class SingleHashTableTest {
 	}
 	
 	@Test
+	void testUpdateString() {
+		
+		// Insert word into hash table
+		singleHT.insert(word);
+		
+		// confirm it exists
+		assertEquals(true, singleHT.find(word));
+		
+		String replacement = "Test";
+		
+		// update the word
+		singleHT.update(word, replacement);
+		
+		// confirm that word no longer exists
+		assertEquals(false, singleHT.find(word));
+	
+		// check that the replacement word exists
+		assertEquals(true, singleHT.find(replacement));
+	}
+	
+	@Test
 	void testFindWhenDeletedString() {
 		// Insert the word into the HT
 		singleHT.insert(word);

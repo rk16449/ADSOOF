@@ -71,7 +71,11 @@ public class  SingleHashTable <T> {
 			// check if its the same object
 			if(internalArray[hashIndex].equals(object)) {
 				// change the reference to replacement (let GC handle the rest)
-				internalArray[hashIndex] = replacement;
+				internalArray[hashIndex] = null;
+				
+				// insert it into the hash table (since we need the same indexes)
+				insert(replacement);
+				
 				return true;
 			}
 			
