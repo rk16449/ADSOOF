@@ -39,6 +39,7 @@ public class  SingleHashTable <T> {
 			if(internalArray[hashIndex].equals(object)) {
 				// Make it equal to null (let gc handle the rest)
 				internalArray[hashIndex] = null;
+				count--;
 				break;
 			}
 			
@@ -66,6 +67,9 @@ public class  SingleHashTable <T> {
 	
 	// inserts a generic object into the generic array
 	public void insert(T object) {
+		
+		// checks we haven't filled up the array
+		if(count >= arraySize) return;
 		
 		int hashIndex = hashIndexOne(object);
 		int step = hashIndexTwo(object);
