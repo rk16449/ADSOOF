@@ -20,14 +20,9 @@ public class  SingleHashTable <T> {
 	
 	@SuppressWarnings("unchecked")
 	public SingleHashTable(Class<T> type, int size) {
-		
 		arraySize = getNextPrime(size);
-		
 		// Initialize array with the class type (+1) needed to keep array size correct
 		internalArray = (T[]) Array.newInstance(type, size + 1);
-		
-		System.out.println("Array size is set to: " + arraySize);
-		System.out.println("Actual array size is set to: " + internalArray.length);
 	}
 	
 	public void delete(T object) {
@@ -38,7 +33,7 @@ public class  SingleHashTable <T> {
 			
 			// check if its the same object
 			if(internalArray[hashIndex].equals(object)) {
-				// Make it equal to null (let gc handle the rest)
+				// Make it equal to null (let GC handle the rest)
 				internalArray[hashIndex] = null;
 				count--;
 				break;
@@ -66,54 +61,60 @@ public class  SingleHashTable <T> {
 		return false;
 	}
 	
-	// inserts a generic object into the generic array
-	public void insert(T object) throws IndexOutOfBoundsException{
-		
-		
-		System.out.println("Count: " + count);
-		System.out.println("Array Size: " + arraySize);
-		
-		// checks we haven't filled up the array
-		if(count >= arraySize) {
-			throw new IndexOutOfBoundsException("Hash Table is full!");
-		}
-		
+	// Finds an object specified and changes it
+	public boolean update(T object, T replacement) {
 		int hashIndex = hashIndexOne(object);
 		int step = hashIndexTwo(object);
 		
+		while(internalArray[hashIndex] != null) {
+			
+			// check if its the same object
+			if(internalArray[hashIndex].equals(object)) {
+				// change the reference to replacement (let GC handle the rest)
+				internalArray[hashIndex] = replacement;
+				return true;
+			}
+			
+			hashIndex += step;
+			hashIndex %= arraySize;
+		}
+		return false;
+	}
+	
+	// inserts a generic object into the generic array
+	public void insert(T object) throws IndexOutOfBoundsException{
+		// checks we haven't filled up the array
+		if(count >= arraySize) throw new IndexOutOfBoundsException("Hash Table is full!");
 		
-		
-		System.out.println("Hash index found: " + hashIndex);
-		
-		
+		int hashIndex = hashIndexOne(object);
+		int step = hashIndexTwo(object);
+
 		// If this isn't an empty node, move by a step until we find a free node
 		while(internalArray[hashIndex] != null) {
 			hashIndex += step;
 			hashIndex %= arraySize;
 		}
 		
-		
-		
-		
 		// Insert it
 		internalArray[hashIndex] = object;
 		count++;
 	}
 	
+	public int getArraySize() {
+		return this.arraySize;
+	}
 	
+	public int getCount() {
+		return this.count;
+	}
+
 	// our ideal index
 	private int hashIndexOne(T object) {
-		
-		int hashVal = hash(object);
-		
-		return hashVal;
+		return hash(object);
 	}
 	
 	private int hashIndexTwo(T object) {
-		
-		int hashVal = hash(object);
-
-		return 7 - hashVal % 7;
+		return 7 - hash(object) % 7;
 	}
 	
 	private int hash(T object) {
@@ -122,17 +123,13 @@ public class  SingleHashTable <T> {
 		return hashVal;
 	}
 	
-	
 	// returns the next available prime number
 	private int getNextPrime(int size) {
-		
 		// Keep looping until we are a prime number
 		while(true) {
-			
 			if(isPrime(size)) {
 				return size;
 			}
-			
 			// Else increment
 			size++;
 		}
@@ -150,13 +147,5 @@ public class  SingleHashTable <T> {
 		}
 		// Must be prime
 		return true;
-	}
-	
-	public int getArraySize() {
-		return this.arraySize;
-	}
-	
-	public int getCount() {
-		return this.count;
 	}
 }
