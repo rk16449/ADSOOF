@@ -1,0 +1,79 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+/**
+ * 
+ */
+
+/**
+ * @author Raj
+ *
+ */
+class LinkedListTest {
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@BeforeEach
+	void setUp() throws Exception {
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@AfterEach
+	void tearDown() throws Exception {
+	}
+
+	/**
+	 * Test method for {@link dataStructures.LinkedList#empty()}.
+	 */
+	@Test
+	void testEmpty() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for {@link dataStructures.LinkedList#cons(java.lang.Object)}.
+	 */
+	@Test
+	void testCons() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for {@link dataStructures.LinkedList#main(java.lang.String[])}.
+	 */
+	@Test
+	void testMain() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for {@link dataStructures.LinkedList#createLinkedList(T[])}.
+	 */
+	@Test
+	void testCreateLinkedList() {
+		fail("Not yet implemented");
+	}
+
+}
