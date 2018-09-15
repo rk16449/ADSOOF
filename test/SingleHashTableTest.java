@@ -1,6 +1,5 @@
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,10 +18,14 @@ class SingleHashTableTest {
 
 	@Test
 	void testFindWhenInsertedString() {
+		
+		
 		String test = "Hello World";
+		
+		// Insert a test String object
 		singleHT.insert(test);
 		
-		// expect it to be true, but its actually ?
+		// we expect it to be true, but its actually whatever the find method returns
 		assertEquals(true, singleHT.find(test));
 	}
 
