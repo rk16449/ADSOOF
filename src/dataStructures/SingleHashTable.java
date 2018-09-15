@@ -17,10 +17,14 @@ public class  SingleHashTable <T> {
 	// lets us know the array size
 	private int arraySize;
 	
+	// stores the type
+	private Class<T> internalType;
+	
 	
 	@SuppressWarnings("unchecked")
 	public SingleHashTable(Class<T> type, int size) {
 		arraySize = getNextPrime(size);
+		internalType = type;
 		// Initialize array with the class type (+1) needed to keep array size correct
 		internalArray = (T[]) Array.newInstance(type, size + 1);
 	}
@@ -41,6 +45,32 @@ public class  SingleHashTable <T> {
 			
 			hashIndex += step;
 			hashIndex %= arraySize;
+		}
+	}
+	
+	// Resizes the hash table
+	@SuppressWarnings("unchecked")
+	public void resize(int size) {
+		
+		// Check if our count variable is bigger
+		if(count >= size) throw new IllegalArgumentException("Hash table must be able to fit previous elements!");
+		
+		// Create the new size and array
+		int newSize = getNextPrime(size);
+		T[] newArray = (T[]) Array.newInstance(internalType, newSize + 1);
+		T[] copyArray = (T[]) Array.newInstance(internalType, newSize + 1);
+		
+		// Copy all objects in internalArray into newArray
+		for(int i=0; i<arraySize; i++) {
+			copyArray[i] = internalArray[i];
+		}
+		
+		// Delete current values by assigning internal Array as new array
+		internalArray = newArray;
+		
+		// Insert all the values back in
+		for(int i=0; i<copyArray.length; i++) {
+			insert(copyArray[i]);
 		}
 	}
 	
