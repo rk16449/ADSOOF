@@ -88,21 +88,23 @@ class SingleHashTableTest {
 		
 		String[] words = {"Hello", "World", "Apple", "Bear", "Cow", "Horse", "Water"};
 		
+		
 		// Insert and check if they exist
 		for(int i=0; i<words.length; i++) {
 			singleHT.insert(words[i]);
 			assertEquals(true, singleHT.find(words[i]));
 		}
 		
+		
 		// Check how many was actually filled
 		assertEquals(7, singleHT.getCount());
 		
 		
 		// Resize the Hash Table
-		singleHT.resize(120);
+		singleHT.resize(1000000);
 		
-		// Check that our size changed (next prime number is 127)
-		assertEquals(127, singleHT.getArraySize());
+		// Check that our size changed (next prime number is 1000003)
+		assertEquals(1000003, singleHT.getArraySize());
 		
 		// Check if values still exist
 		for(int i=0; i<words.length; i++) {
@@ -111,6 +113,16 @@ class SingleHashTableTest {
 		
 		// Check that there is still 7
 		assertEquals(7, singleHT.getCount());
+				
+		// Insert more words (7 * 10000)
+		for(int z=0; z<10000; z++) {
+			for(int i=0; i<words.length; i++) {
+				singleHT.insert(words[i] + " i: " + i);
+			}
+		}
+		
+		// Check that there is now 7 + (7 * 10000) words
+		assertEquals(7 + (7*10000), singleHT.getCount());
 	}
 
 }
