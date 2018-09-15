@@ -29,6 +29,24 @@ public class  SingleHashTable <T> {
 		System.out.println("Array size is set to: " + arraySize);
 	}
 	
+	public void delete(T object) {
+		int hashIndex = hashIndexOne(object);
+		int step = hashIndexTwo(object);
+		
+		while(internalArray[hashIndex] != null) {
+			
+			// check if its the same object
+			if(internalArray[hashIndex].equals(object)) {
+				// Make it equal to null (let gc handle the rest)
+				internalArray[hashIndex] = null;
+				break;
+			}
+			
+			hashIndex += step;
+			hashIndex %= arraySize;
+		}
+	}
+	
 	public boolean find(T object) {
 		int hashIndex = hashIndexOne(object);
 		int step = hashIndexTwo(object);
