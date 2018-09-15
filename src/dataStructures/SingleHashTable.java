@@ -29,33 +29,60 @@ public class  SingleHashTable <T> {
 		System.out.println("Array size is set to: " + arraySize);
 	}
 	
+	public boolean find(T object) {
+		int hashIndex = hashIndexOne(object);
+		int step = hashIndexTwo(object);
+		
+		while(internalArray[hashIndex] != null) {
+			
+			// check if its the same object
+			if(internalArray[hashIndex].equals(object)) {
+				return true;
+			}
+			
+			hashIndex += step;
+			hashIndex %= arraySize;
+		}
+		return false;
+	}
+	
 	// inserts a generic object into the generic array
 	public void insert(T object) {
 		
 		int hashIndex = hashIndexOne(object);
+		int step = hashIndexTwo(object);
 		
-		while(true) {
-			
-			// Free space found!
-			if(internalArray[hashIndex] == null) {
-				internalArray[hashIndex] = object;
-				break;
-			}
-			
-			// Else use the step size
+		
+		while(internalArray[hashIndex] != null) {
+			hashIndex += step;
+			hashIndex %= arraySize;
 		}
 		
+		
+		// Insert it
+		internalArray[hashIndex] = object;
+		count++;
 	}
 	
 	
 	// our ideal index
 	private int hashIndexOne(T object) {
 		
+		int hashVal = hash(object);
+		
+		return hashVal;
+	}
+	
+	private int hashIndexTwo(T object) {
+		
+		int hashVal = hash(object);
+
+		return 7 - hashVal % 7;
+	}
+	
+	private int hash(T object) {
 		int hashVal = object.hashCode() % arraySize;
-		
-		// add array size to negative values
 		if(hashVal < 0) hashVal += arraySize;
-		
 		return hashVal;
 	}
 	
