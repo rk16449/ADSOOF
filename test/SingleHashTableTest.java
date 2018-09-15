@@ -28,5 +28,17 @@ class SingleHashTableTest {
 		// we expect it to be true, but its actually whatever the find method returns
 		assertEquals(true, singleHT.find(test));
 	}
+	
+	@Test
+	void testFindWhenDeletedString() {
+		
+		String word = "Hello";
+		singleHT.insert(word);
+		
+		// Delete it from the HT
+		singleHT.delete(word);
+		
+		assertEquals(false, singleHT.find(word));
+	}
 
 }
