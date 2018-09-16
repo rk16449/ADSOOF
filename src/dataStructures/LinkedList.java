@@ -1,34 +1,72 @@
 package dataStructures;
 
 public class LinkedList<E> {
-	
-	class Cell<T>{
-		T first;
-		Cell<T> next;
-		
-		Cell(T _first, Cell<T> _next){
-			this.first = _first;
-			this.next = _next;
-		}
-	}
-	
+
 	private Cell<E> myList;
 
 	private LinkedList(Cell<E> list) {
 		myList = list;
 	}
 	
+	public Cell<E> getList(){
+		return this.myList;
+	}
+	
 	public static <T> LinkedList<T> empty() {
 		return new LinkedList<T>(null);
 	}
 	
+	// Remove element from LinkedList
+	public boolean delete(E item){
+		
+		if(myList.getFirst().equals(item)) {
+			
+			
+			if(myList.getNext() != null) {
+				myList = myList.getNext();
+			}else {
+				myList = null;
+			}
+			
+			return true;
+		}
+		
+		// Loop through the linked list elements until item found
+		// make the next value equal to the node after
+		for(Cell<E> ptr = myList; ptr.getNext() != null; ptr = ptr.getNext()) {
+			
+			
+			
+			
+			// Remove it by changing the ptr references
+			if(ptr.getNext().equals(item)) {
+				
+				
+				if(ptr.getNext().getNext() != null) {
+					ptr.setNext(ptr.getNext().getNext());
+				}else {
+					ptr.setNext(null);
+				}
+				
+				
+				
+				return true;
+				
+			}
+			
+		}
+		
+		return false;
+	}
+	
+	
+	/**
+	 * Constructs a new LinkedList and attaches an item at the front of it
+	 * @param item
+	 * @return
+	 */
 	public LinkedList<E> cons(E item) {
 		return new LinkedList<E>(new Cell<E>(item, myList));
-	}
-
-	public static void main(String[] args) {
-		// Create a Linked List
-		LinkedList<Integer> integerList = createLinkedList(new Integer[]{4, 5, 6, 4});
 	}
 	
 	// Creates and returns a T linked list

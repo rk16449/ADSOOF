@@ -6,6 +6,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import dataStructures.Cell;
+import dataStructures.LinkedList;
+
 /**
  * 
  */
@@ -57,7 +60,21 @@ class LinkedListTest {
 	 */
 	@Test
 	void testCons() {
-		fail("Not yet implemented");
+		
+		
+		// Creates a linked list object order: -> 10, -> 50, -> 100
+		LinkedList<Integer> listObjs = LinkedList.createLinkedList(new Integer[] {100, 50, 10});
+		
+		// Add 10 to the front of the list
+		listObjs = listObjs.cons(5);
+		
+		// Verify it exists
+		for(Cell<Integer> ptr = listObjs.getList();  ptr != null; ptr = ptr.getNext()) {
+			System.out.println(ptr.getFirst());
+		}
+		
+		
+		assertEquals(Integer.valueOf(5), listObjs.getList().getFirst());
 	}
 
 	/**
