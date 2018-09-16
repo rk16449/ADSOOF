@@ -18,6 +18,8 @@ import dataStructures.LinkedList;
  *
  */
 class LinkedListTest {
+	
+	private LinkedList<Integer> listObjs;
 
 	/**
 	 * @throws java.lang.Exception
@@ -37,7 +39,8 @@ class LinkedListTest {
 	 * @throws java.lang.Exception
 	 */
 	@BeforeEach
-	void setUp() throws Exception {
+	void beforeEach() throws Exception {
+		
 	}
 
 	/**
@@ -53,6 +56,18 @@ class LinkedListTest {
 	@Test
 	void testEmpty() {
 		fail("Not yet implemented");
+	}
+	
+	@Test
+	void testDelete() {
+		
+		LinkedList<Integer> listObjs = LinkedList.createLinkedList(new Integer[] {100, 25, 10});
+		
+		// try to delete from the list
+		listObjs.delete(10);
+		
+		// 25 should be at the start of the list
+		assertEquals(Integer.valueOf(25), listObjs.getList().getFirst());
 	}
 
 	/**
