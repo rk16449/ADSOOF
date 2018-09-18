@@ -37,4 +37,33 @@ public abstract class SuperHash<T> {
 		// Must be prime
 		return true;
 	}
+	
+	// our ideal index
+	protected int hashIndexOne(T object) {
+		return hash(object);
+	}
+	
+	protected int hashIndexTwo(T object) {
+		return 7 - hash(object) % 7;
+	}
+	
+	protected int hash(T object) {
+		int hashVal = object.hashCode() % arraySize;
+		if(hashVal < 0) hashVal += arraySize;
+		return hashVal;
+	}
+	
+	
+	protected int getArraySize() {
+		return this.arraySize;
+	}
+	
+	protected int getCount() {
+		return this.count;
+	}
+	
+	protected Class<T> getType(){
+		return internalType;
+	}
+
 }
