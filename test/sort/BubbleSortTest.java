@@ -50,7 +50,16 @@ class BubbleSortTest {
 	 */
 	@Test
 	void testSort() {
-		fail("Not yet implemented");
+		Integer[] rgInts = new Integer[] {5, 10, 25, 16};
+		
+		BubbleSort.sort(rgInts);
+		
+		for(int i=0; i<rgInts.length; i++) {
+			System.out.println(rgInts[i]);
+		}
+		
+		// Check that the values are sorted
+		
 	}
 
 }
