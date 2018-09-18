@@ -33,7 +33,7 @@ class SingleHashTableTest {
 		singleHT.insert(word);
 		
 		// we expect it to be true, but its actually whatever the find method returns
-		assertEquals(true, singleHT.find(word));
+		assertEquals(true, singleHT.exists(word));
 	}
 	
 	@Test
@@ -43,7 +43,7 @@ class SingleHashTableTest {
 		singleHT.insert(word);
 		
 		// confirm it exists
-		assertEquals(true, singleHT.find(word));
+		assertEquals(true, singleHT.exists(word));
 		
 		String replacement = "Test";
 		
@@ -51,10 +51,10 @@ class SingleHashTableTest {
 		singleHT.update(word, replacement);
 		
 		// confirm that word no longer exists
-		assertEquals(false, singleHT.find(word));
+		assertEquals(false, singleHT.exists(word));
 	
 		// check that the replacement word exists
-		assertEquals(true, singleHT.find(replacement));
+		assertEquals(true, singleHT.exists(replacement));
 	}
 	
 	@Test
@@ -63,13 +63,13 @@ class SingleHashTableTest {
 		singleHT.insert(word);
 		
 		// Test that it exists
-		assertEquals(true, singleHT.find(word));
+		assertEquals(true, singleHT.exists(word));
 		
 		// Delete it from the HT
 		singleHT.delete(word);
 		
 		// Test that it no longer exists
-		assertEquals(false, singleHT.find(word));
+		assertEquals(false, singleHT.exists(word));
 	}
 	
 	@Test
@@ -93,7 +93,7 @@ class SingleHashTableTest {
 		// Insert and check if they exist
 		for(int i=0; i<words.length; i++) {
 			singleHT.insert(words[i]);
-			assertEquals(true, singleHT.find(words[i]));
+			assertEquals(true, singleHT.exists(words[i]));
 		}
 		
 		
@@ -109,7 +109,7 @@ class SingleHashTableTest {
 		
 		// Check if values still exist
 		for(int i=0; i<words.length; i++) {
-			assertEquals(true, singleHT.find(words[i]));
+			assertEquals(true, singleHT.exists(words[i]));
 		}
 		
 		// Check that there is still 7
