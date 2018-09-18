@@ -2,11 +2,24 @@ package dataStructures;
 
 public class Cell<T>{
 	private T first;
+	private int count;
 	private Cell<T> next;
 	
 	Cell(T _first, Cell<T> _next){
 		this.first = _first;
 		this.next = _next;
+	}
+	
+	public void inc() {
+		count++;
+	}
+	
+	public void dec() {
+		count--;
+	}
+	
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 	public void setFirst(T first) {
