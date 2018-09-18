@@ -2,7 +2,7 @@ package dataStructures;
 
 import java.lang.reflect.Array;
 
-public class LLHashTable <T> extends SuperHash{
+public class LinkedHashTable <T> extends SuperHash{
 
 	// Generic Hash Table that supports separate chaining
 	// Uses a prime number as array size
@@ -11,7 +11,7 @@ public class LLHashTable <T> extends SuperHash{
 	LinkedList<T>[] myArray;
 	
 	
-	public LLHashTable(Class<T> type, int size) {
+	public LinkedHashTable(Class<T> type, int size) {
 		// Make sure its prime sized
 		arraySize = getNextPrime(size);
 		
