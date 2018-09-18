@@ -50,16 +50,17 @@ class BubbleSortTest {
 	 */
 	@Test
 	void testSort() {
-		Integer[] rgInts = new Integer[] {5, 10, 25, 16};
 		
+		// Unsorted integer array
+		Integer[] rgInts = new Integer[] {5, 25, 10, 16};
+		
+		// Call the sort method
 		BubbleSort.sort(rgInts);
 		
-		for(int i=0; i<rgInts.length; i++) {
-			System.out.println(rgInts[i]);
-		}
-		
 		// Check that the values are sorted
+		Integer[] rgSortedInts = new Integer[] {5, 10, 16, 25};
 		
+		assertArrayEquals(rgSortedInts, rgInts);
 	}
 
 }
