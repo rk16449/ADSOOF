@@ -23,7 +23,7 @@ import dataStructures.LinkedList;
  */
 class LinkedListTest<E> {
 
-	private LinkedList<E> listObjs;
+	private LinkedList<Integer> listObjs;
 
 	/**
 	 * @throws java.lang.Exception
@@ -59,7 +59,7 @@ class LinkedListTest<E> {
 	 */
 	@Test
 	void testEmpty() {
-		LinkedList<String> listObjs = LinkedList.empty();
+		listObjs = LinkedList.empty();
 
 		// check that its empty by checking the first node is empty
 		assertThrows(NullPointerException.class, () -> {
@@ -75,7 +75,7 @@ class LinkedListTest<E> {
 	@Test
 	void testDelete() {
 
-		LinkedList<Integer> listObjs = LinkedList.createLinkedList(new Integer[] { 100, 25, 10 });
+		listObjs = LinkedList.createLinkedList(new Integer[] { 100, 25, 10 });
 
 		// try to delete from the list
 		listObjs.delete(10);
