@@ -3,7 +3,7 @@ package dataStructures;
 import java.lang.reflect.Array;
 
 // TODO - FIX using double T
-public class  SingleHashTable <T> extends SuperHash<T>{
+public class  SingleHashTable<T> extends SuperHash<T> implements IHashTable<T>{
 
 	// Generic HashTable without separate chaining (no linked lists)
 	// Uses prime numbers
@@ -22,6 +22,7 @@ public class  SingleHashTable <T> extends SuperHash<T>{
 		internalArray = (T[]) Array.newInstance(type, arraySize);
 	}
 	
+	@Override
 	public void delete(T object) {
 		int hashIndex = hashIndexOne(object);
 		int step = hashIndexTwo(object);
@@ -71,7 +72,8 @@ public class  SingleHashTable <T> extends SuperHash<T>{
 		}
 	}
 	
-	public boolean find(T object) {
+	@Override
+	public boolean exists(T object) {
 		int hashIndex = hashIndexOne(object);
 		int step = hashIndexTwo(object);
 		
@@ -112,8 +114,9 @@ public class  SingleHashTable <T> extends SuperHash<T>{
 		return false;
 	}
 	
+	@Override
 	// inserts a generic object into the generic array
-	public void insert(T object) throws IndexOutOfBoundsException{
+	public void insert(T object){
 		// checks we haven't filled up the array
 		if(count >= arraySize) throw new IndexOutOfBoundsException("Hash Table is full!");
 		
@@ -130,33 +133,4 @@ public class  SingleHashTable <T> extends SuperHash<T>{
 		internalArray[hashIndex] = object;
 		count++;
 	}
-	
-	public int getArraySize() {
-		return this.arraySize;
-	}
-	
-	public int getCount() {
-		return this.count;
-	}
-	
-	public Class<T> getType(){
-		return internalType;
-	}
-
-	// our ideal index
-	private int hashIndexOne(T object) {
-		return hash(object);
-	}
-	
-	private int hashIndexTwo(T object) {
-		return 7 - hash(object) % 7;
-	}
-	
-	private int hash(T object) {
-		int hashVal = object.hashCode() % arraySize;
-		if(hashVal < 0) hashVal += arraySize;
-		return hashVal;
-	}
-	
-	
 }
