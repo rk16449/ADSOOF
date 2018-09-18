@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
  * @author Raj
  *
  */
-class LLHashTableTest {
+class LinkedHashTableTest {
 
 	/**
 	 * @throws java.lang.Exception
@@ -46,7 +46,7 @@ class LLHashTableTest {
 	}
 
 	/**
-	 * Test method for {@link dataStructures.LLHashTable#LLHashTable(java.lang.Class, int)}.
+	 * Test method for {@link dataStructures.LinkedHashTable#LLHashTable(java.lang.Class, int)}.
 	 */
 	@Test
 	final void testLLHashTable() {
