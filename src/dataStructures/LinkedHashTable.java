@@ -16,7 +16,7 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 		arraySize = getNextPrime(size);
 
 		// Initialize the LinkedList array with the size given
-		myArray = (LinkedList<T>[]) Array.newInstance(type, size + 1);
+		myArray = (LinkedList<T>[]) Array.newInstance(type, arraySize);
 
 		count = 0;
 	}
@@ -29,13 +29,27 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 			throw new IndexOutOfBoundsException("Hash Table is full!");
 
 		int hashIndex = hashIndexOne(obj);
-		int step = hashIndexTwo(obj);
-
-		// check that this node is null
 
 		// if it isn't null then we have a linked list, just add it to the linked list
-
-		// if its a duplicate, increase the linked list count instead
+		if(myArray[hashIndex] != null) {
+			
+			boolean found = false;
+			// check if its a duplicate by looping through the linked list
+			for(Cell<T> ptr = myArray[hashIndex].getList(); ptr != null; ptr = ptr.getNext()) {
+				
+				// we have a match, increase its count
+				if(ptr.getFirst().equals(obj)) {
+					ptr.inc();
+					found = true;
+					break;
+				}
+			}
+			
+			// We didn't find anything in the linked list, so just insert it into the linked list
+			if(!found) {
+				myArray[hashIndex] = myArray[hashIndex].cons(obj);
+			}
+		}
 	}
 
 	public void delete(T obj) {
