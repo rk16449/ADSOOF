@@ -8,16 +8,16 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 	// Uses a prime number as array size
 	// Underlining data structure is an array
 
-	LinkedList<T>[] myArray;
-
+	LinkedList[] myArray;
+	
 	@SuppressWarnings("unchecked")
 	public LinkedHashTable(Class<T> type, int size) {
 		// Make sure its prime sized
 		arraySize = getNextPrime(size);
 
 		// Initialize the LinkedList array with the size given
-		myArray = (LinkedList<T>[]) Array.newInstance(type, arraySize);
-
+		myArray = (LinkedList[]) Array.newInstance(type, arraySize);
+		
 		count = 0;
 	}
 

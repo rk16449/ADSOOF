@@ -46,11 +46,23 @@ class LinkedHashTableTest {
 	}
 
 	/**
-	 * Test method for {@link dataStructures.LinkedHashTable#LLHashTable(java.lang.Class, int)}.
+	 * Test method for {@link dataStructures.LinkedHashTable#LinkedHashTable(java.lang.Class, int)}.
 	 */
 	@Test
-	final void testLLHashTable() {
+	final void testLinkedHashTable() {
 		fail("Not yet implemented"); // TODO
+	}
+	
+	@Test
+	final void testInsert() {
+		// Create a linked list based hash table that stores strings
+		LinkedHashTable<String> htWords = new LinkedHashTable<String>(String.class, 5000);
+		
+		// Insert the word 'Hello'
+		//htWords.insert("Hello");
+		
+		// Check that it exists in the hash table
+		//assertEquals(true, htWords.exists("Hello"));
 	}
 
 }
