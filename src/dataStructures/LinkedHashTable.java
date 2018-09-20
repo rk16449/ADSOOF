@@ -8,7 +8,7 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 	// Uses a prime number as array size
 	// Underlining data structure is an array
 
-	LinkedList<T>[] myArray;
+	T[] myArray;
 	
 	@SuppressWarnings("unchecked")
 	public LinkedHashTable(Class<T> type, int size) {
@@ -16,7 +16,7 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 		arraySize = getNextPrime(size);
 
 		// Initialize the LinkedList array with the size given
-		myArray = (LinkedList<T>[]) Array.newInstance(type, arraySize);
+		myArray = (T[]) Array.newInstance(type, arraySize);
 		
 		count = 0;
 	}
@@ -35,7 +35,7 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 			
 			boolean found = false;
 			// check if its a duplicate by looping through the linked list
-			for(Cell<T> ptr = myArray[hashIndex].getList(); ptr != null; ptr = ptr.getNext()) {
+			for(Cell<T> ptr = ((LinkedList) myArray[hashIndex]).getList(); ptr != null; ptr = ptr.getNext()) {
 				
 				// we have a match, increase its count
 				if(ptr.getFirst().equals(obj)) {
@@ -47,7 +47,7 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 			
 			// We didn't find anything in the linked list, so just insert it into the linked list
 			if(!found) {
-				myArray[hashIndex] = myArray[hashIndex].cons(obj);
+				myArray[hashIndex] = (T) ((LinkedList) myArray[hashIndex]).cons(obj);
 			}
 		}
 	}
