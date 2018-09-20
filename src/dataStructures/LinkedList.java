@@ -12,8 +12,8 @@ public class LinkedList<E> {
 		return this.myList;
 	}
 	
-	public static <T> LinkedList<T> empty() {
-		return new LinkedList<T>(null);
+	public static <E> LinkedList<E> empty() {
+		return new LinkedList<E>(null);
 	}
 	
 	// Remove element from LinkedList
@@ -70,9 +70,9 @@ public class LinkedList<E> {
 	}
 	
 	// Creates and returns a T linked list
-	public static <T> LinkedList<T> createLinkedList(T[] vals){
+	public static <E> LinkedList<E> createLinkedList(E[] vals){
 		
-		LinkedList<T> list = empty();
+		LinkedList<E> list = empty();
 		
 		for(int i=0; i<vals.length; i++) {
 			list = list.cons(vals[i]);

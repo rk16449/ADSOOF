@@ -8,7 +8,7 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 	// Uses a prime number as array size
 	// Underlining data structure is an array
 
-	LinkedList[] myArray;
+	LinkedList<T>[] myArray;
 	
 	@SuppressWarnings("unchecked")
 	public LinkedHashTable(Class<T> type, int size) {
@@ -16,7 +16,7 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 		arraySize = getNextPrime(size);
 
 		// Initialize the LinkedList array with the size given
-		myArray = (LinkedList[]) Array.newInstance(type, arraySize);
+		myArray = (LinkedList<T>[]) Array.newInstance(type, arraySize);
 		
 		count = 0;
 	}
