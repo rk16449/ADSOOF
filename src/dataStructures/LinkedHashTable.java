@@ -60,7 +60,35 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 	}
 
 	public void delete(T obj) {
-
+		
+		// Calculate hash value
+		int hashIndex = hashIndexOne(obj);
+		
+		// check there is something on the index
+		if(myArray[hashIndex] != null) {
+			
+			// check in the linkedlist if the obj exists there, if it does check its count value, dec if > 1
+			
+			for(Cell<T> ptr = myArray[hashIndex].getList(); ptr != null; ptr = ptr.getNext()) {
+				
+				// is there a match?
+				if(ptr.getFirst().equals(obj)) {
+				
+					// check the count
+					if(ptr.getCount() > 1) {
+						ptr.dec();
+					}else {
+						// delete it entirely
+						ptr = null;
+						break;
+					}
+					
+				}
+			}
+			
+			
+		}
+		
 		
 
 	}

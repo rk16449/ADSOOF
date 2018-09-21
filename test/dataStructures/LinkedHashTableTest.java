@@ -64,5 +64,10 @@ class LinkedHashTableTest {
 		// Check that it exists in the hash table
 		assertEquals(true, htWords.exists("Hello"));
 	}
+	
+	@Test
+	final void testDelete() {
+		
+	}
 
 }
