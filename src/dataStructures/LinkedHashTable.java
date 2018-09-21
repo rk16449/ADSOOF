@@ -90,18 +90,40 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 
 	public void update(T obj1, T obj2) {
 		// calculate the hash index
-
+		
 		// find obj1
 
 		// if obj1 is found then remove it entirely, and re-insert obj2 into the linked
 		// list
 	}
+	
+	// Returns the count of a certain object in the Hash Table / Linked List
+	public int getCount(T obj) {
+		
+		// calculate hash value
+		int hashIndex = hashIndexOne(obj);
+		
+		if(myArray[hashIndex] != null) {
+			
+			// Loop through the linked list until obj is found
+			for(Cell<T> ptr = myArray[hashIndex].getList(); ptr != null; ptr = ptr.getNext()) {
+				
+				// Match found, return the count value!
+				if(ptr.getFirst().equals(obj)) {
+					return ptr.getCount();
+				}
+			}
+		}
+		
+		// Else no count found
+		return 0;
+	}
 
 	public void updateCount(T obj, int count) {
 		// calculate hash/index
-
-		// set the value of the count of the obj if found
+		int hashIndex = hashIndexOne(obj);
 	}
+		// set the value of the count of the obj if found
 
 	@Override
 	public boolean exists(T obj) {
