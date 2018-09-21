@@ -7,16 +7,18 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 	// Generic Hash Table that supports separate chaining
 	// Uses a prime number as array size
 	// Underlining data structure is an array
-
-	T[] myArray;
+	
+	LinkedList<T>[] myArray;
 	
 	@SuppressWarnings("unchecked")
-	public LinkedHashTable(Class<T> type, int size) {
+	public LinkedHashTable(int size) {
 		// Make sure its prime sized
 		arraySize = getNextPrime(size);
 
-		// Initialize the LinkedList array with the size given
-		myArray = (T[]) Array.newInstance(type, arraySize);
+		// Try to set it normally?
+		myArray = new LinkedList[arraySize];
+		
+		System.out.println("Size of normal linked list generic: " + myArray.length);
 		
 		count = 0;
 	}
@@ -29,13 +31,15 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 			throw new IndexOutOfBoundsException("Hash Table is full!");
 
 		int hashIndex = hashIndexOne(obj);
+		
+		System.out.println("Hash index to check insert: " + hashIndex);
 
 		// if it isn't null then we have a linked list, just add it to the linked list
 		if(myArray[hashIndex] != null) {
 			
 			boolean found = false;
 			// check if its a duplicate by looping through the linked list
-			for(Cell<T> ptr = ((LinkedList) myArray[hashIndex]).getList(); ptr != null; ptr = ptr.getNext()) {
+			for(Cell<T> ptr = myArray[hashIndex].getList(); ptr != null; ptr = ptr.getNext()) {
 				
 				// we have a match, increase its count
 				if(ptr.getFirst().equals(obj)) {
@@ -47,23 +51,18 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 			
 			// We didn't find anything in the linked list, so just insert it into the linked list
 			if(!found) {
-				myArray[hashIndex] = (T) ((LinkedList) myArray[hashIndex]).cons(obj);
+				myArray[hashIndex] = myArray[hashIndex].cons(obj);
 			}
+		}else {
+			// add a new linked list in this element
+			myArray[hashIndex] = new LinkedList<T>(new Cell<T>(obj, null));
 		}
 	}
 
 	public void delete(T obj) {
 
-		// calculate hash/step
+		
 
-		// check if this index is not null
-
-		// if its not null check inside the LinkedList if the value exists
-
-		// if it exists check the count value, if its 1 then we need to delete it
-		// entirely
-
-		// if its above 1 just decrement the count instead
 	}
 
 	public void update(T obj1, T obj2) {
@@ -83,7 +82,24 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 
 	@Override
 	public boolean exists(T obj) {
-		// TODO Auto-generated method stub
+		
+		// calculate hash/step
+		int hashIndex = hashIndexOne(obj);
+		
+		System.out.println("Hash index to check exists: " + hashIndex);
+
+		// check if this index is not null
+		if(myArray[hashIndex] != null) {
+			
+			// if its not null check inside the LinkedList if the value exists
+			for(Cell<T> ptr = myArray[hashIndex].getList();  ptr != null; ptr = ptr.getNext()) {
+				
+				if(ptr.getFirst().equals(obj)) {
+					return true;
+				}
+				
+			}
+		}
 		return false;
 	}
 

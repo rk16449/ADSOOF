@@ -8,6 +8,9 @@ public class Cell<T>{
 	Cell(T _first, Cell<T> _next){
 		this.first = _first;
 		this.next = _next;
+		
+		// if something was set into first, we need to increment the count
+		if(_first != null) count++;
 	}
 	
 	public void inc() {

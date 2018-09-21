@@ -56,13 +56,13 @@ class LinkedHashTableTest {
 	@Test
 	final void testInsert() {
 		// Create a linked list based hash table that stores strings
-		LinkedHashTable<String> htWords = new LinkedHashTable<String>(String.class, 5000);
+		LinkedHashTable<String> htWords = new LinkedHashTable<String>(5000);
 		
 		// Insert the word 'Hello'
-		//htWords.insert("Hello");
+		htWords.insert("Hello");
 		
 		// Check that it exists in the hash table
-		//assertEquals(true, htWords.exists("Hello"));
+		assertEquals(true, htWords.exists("Hello"));
 	}
 
 }

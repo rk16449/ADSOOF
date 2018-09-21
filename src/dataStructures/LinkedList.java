@@ -4,7 +4,7 @@ public class LinkedList<E> {
 
 	private Cell<E> myList;
 
-	private LinkedList(Cell<E> list) {
+	public LinkedList(Cell<E> list) {
 		myList = list;
 	}
 	
