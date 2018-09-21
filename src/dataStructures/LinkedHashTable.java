@@ -64,33 +64,28 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 		// Calculate hash value
 		int hashIndex = hashIndexOne(obj);
 		
+		System.out.println("Deleteing at index: " + hashIndex);
+		
 		// check there is something on the index
 		if(myArray[hashIndex] != null) {
 			
-			// check in the linkedlist if the obj exists there, if it does check its count value, dec if > 1
+			System.out.println("Linked List exists at index;");
+			
+			// check in the LinkedList if the obj exists there, if it does check its count value, dec if > 1
 			
 			for(Cell<T> ptr = myArray[hashIndex].getList(); ptr != null; ptr = ptr.getNext()) {
-				
 				// is there a match?
 				if(ptr.getFirst().equals(obj)) {
-				
-					// check the count
+					// check the count, decrement it, else delete it
 					if(ptr.getCount() > 1) {
 						ptr.dec();
 					}else {
-						// delete it entirely
-						ptr = null;
-						break;
+						myArray[hashIndex].delete(obj);
 					}
-					
+					break;
 				}
 			}
-			
-			
 		}
-		
-		
-
 	}
 
 	public void update(T obj1, T obj2) {

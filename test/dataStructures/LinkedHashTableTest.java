@@ -67,7 +67,16 @@ class LinkedHashTableTest {
 	
 	@Test
 	final void testDelete() {
+		LinkedHashTable<String> htWords = new LinkedHashTable<String>(5000);
 		
+		// Insert the word 'Hello'
+		htWords.insert("Hello");
+		
+		// Delete it from the hash table
+		htWords.delete("Hello");
+		
+		// Check that it no longer exists
+		assertEquals(false, htWords.exists("Hello"));
 	}
 
 }
