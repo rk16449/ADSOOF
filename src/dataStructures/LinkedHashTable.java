@@ -12,6 +12,9 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 	
 	@SuppressWarnings("unchecked")
 	public LinkedHashTable(int size) {
+		
+		validateSize(size);
+		
 		// Make sure its prime sized
 		arraySize = getNextPrime(size);
 
@@ -21,6 +24,10 @@ public class LinkedHashTable<T> extends SuperHash<T> implements IHashTable<T> {
 		System.out.println("Size of normal linked list generic: " + myArray.length);
 		
 		count = 0;
+	}
+	
+	private void validateSize(int size) {
+		if(size <= 0) throw new IllegalArgumentException("Invalid size entered!");
 	}
 
 	public void insert(T obj) {
