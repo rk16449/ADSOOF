@@ -78,5 +78,19 @@ class LinkedHashTableTest {
 		// Check that it no longer exists
 		assertEquals(false, htWords.exists("Hello"));
 	}
+	
+	@Test
+	final void testCount() {
+		LinkedHashTable<String> htWords = new LinkedHashTable<String>(5000);
+		
+		
+		// Insert 500 'Test' strings
+		for(int i=0; i<500; i++) {
+			htWords.insert("Test");
+		}
+		
+		// check that we have a count of 500 test objects
+		assertEquals(500, htWords.getCount("Test"));
+	}
 
 }
