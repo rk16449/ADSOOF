@@ -17,6 +17,8 @@ public class Node<T extends Comparable<T>> {
 	}
 	
 	public void insert(T value) {
+		
+		// Insert onto the left side if value is less than key
 		if(key.compareTo(value) <= 0) {
 			if(left == null) {
 				left = new Node<T>(value);
