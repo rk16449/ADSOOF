@@ -33,4 +33,32 @@ public class Node<T extends Comparable<T>> {
 			}
 		}
 	}
+	
+	public boolean contains(T value) {
+		if(key == value) {
+			return true;
+		}else if(value.compareTo(key) < 0) {
+			if(left == null) {
+				return false;
+			}else {
+				return left.contains(value);
+			}
+		}else {
+			if(right == null) {
+				return false;
+			}else {
+				return right.contains(value);
+			}
+		}
+	}
+	
+	public void printInOrder() {
+		if(left != null) {
+			left.printInOrder();
+		}
+		System.out.println(key);
+		if(right != null) {
+			right.printInOrder();
+		}
+	}
 }
