@@ -11,6 +11,11 @@ public class Node<T extends Comparable<T>> {
 		left = right = null;
 	}
 	
+	// Returns true if we are a leaf, no left or right nodes
+	public boolean isLeaf() {
+		return (left == null) && (right == null);
+	}
+	
 	public void insert(T value) {
 		if(key.compareTo(value) <= 0) {
 			if(left == null) {
