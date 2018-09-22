@@ -124,5 +124,4 @@ class SingleHashTableTest {
 		// Check that there is now 7 + (7 * 10000) words
 		assertEquals(7 + (7*10000), singleHT.getEntries());
 	}
-
 }

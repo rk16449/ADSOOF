@@ -105,19 +105,10 @@ class LinkedListTest<E> {
 	}
 
 	/**
-	 * Test method for {@link dataStructures.LinkedList#main(java.lang.String[])}.
-	 */
-	@Test
-	void testMain() {
-		fail("Not yet implemented");
-	}
-
-	/**
 	 * Test method for {@link dataStructures.LinkedList#createLinkedList(T[])}.
 	 */
 	@Test
 	void testCreateLinkedList() {
 		fail("Not yet implemented");
 	}
-
 }

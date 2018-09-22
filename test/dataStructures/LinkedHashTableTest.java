@@ -104,4 +104,22 @@ class LinkedHashTableTest {
 		assertEquals(500, htWords.getCount("Test"));
 	}
 
+	@Test
+	final void testCountAfterDelete() {
+		LinkedHashTable<String> htWords = new LinkedHashTable<String>(5000);
+
+		// Insert 500 'Test' strings
+		for (int i = 0; i < 500; i++) {
+			htWords.insert("Test");
+		}
+
+		// Delete 250 'Test' strings
+		for (int i = 0; i < 250; i++) {
+			htWords.delete("Test");
+		}
+
+		// check that we have a count of 250 test objects
+		assertEquals(250, htWords.getCount("Test"));
+	}
+
 }
