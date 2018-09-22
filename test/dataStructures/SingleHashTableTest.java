@@ -98,8 +98,7 @@ class SingleHashTableTest {
 		
 		
 		// Check how many was actually filled
-		assertEquals(7, singleHT.getCount());
-		
+		assertEquals(7, singleHT.getEntries());
 		
 		// Resize the Hash Table
 		singleHT.resize(1000000);
@@ -113,7 +112,7 @@ class SingleHashTableTest {
 		}
 		
 		// Check that there is still 7
-		assertEquals(7, singleHT.getCount());
+		assertEquals(7, singleHT.getEntries());
 				
 		// Insert more words (7 * 10000)
 		for(int z=0; z<10000; z++) {
@@ -123,7 +122,7 @@ class SingleHashTableTest {
 		}
 		
 		// Check that there is now 7 + (7 * 10000) words
-		assertEquals(7 + (7*10000), singleHT.getCount());
+		assertEquals(7 + (7*10000), singleHT.getEntries());
 	}
 
 }
