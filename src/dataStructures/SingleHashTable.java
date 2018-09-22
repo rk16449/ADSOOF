@@ -33,7 +33,7 @@ public class  SingleHashTable<T> extends SuperHash<T> implements IHashTable<T>{
 			if(internalArray[hashIndex].equals(object)) {
 				// Make it equal to null (let GC handle the rest)
 				internalArray[hashIndex] = null;
-				count--;
+				entries--;
 				break;
 			}
 			
@@ -47,7 +47,7 @@ public class  SingleHashTable<T> extends SuperHash<T> implements IHashTable<T>{
 	public void resize(int size) {
 		
 		// Check if our count variable is bigger
-		if(size < count) throw new IllegalArgumentException("Hash table must be able to fit previous elements!");
+		if(size < entries) throw new IllegalArgumentException("Hash table must be able to fit previous elements!");
 		
 		// Create the new size and copy array
 		int newSize = getNextPrime(size);
@@ -64,7 +64,7 @@ public class  SingleHashTable<T> extends SuperHash<T> implements IHashTable<T>{
 		// Delete current values by assigning internal Array as new array
 		internalArray = newArray;
 		arraySize = newSize;
-		count = 0;
+		entries = 0;
 		
 		// Insert all the values back in
 		for(int i=0; i<copyArray.length; i++) {
@@ -118,7 +118,7 @@ public class  SingleHashTable<T> extends SuperHash<T> implements IHashTable<T>{
 	// inserts a generic object into the generic array
 	public void insert(T object){
 		// checks we haven't filled up the array
-		if(count >= arraySize) throw new IndexOutOfBoundsException("Hash Table is full!");
+		if(entries >= arraySize) throw new IndexOutOfBoundsException("Hash Table is full!");
 		
 		int hashIndex = hashIndexOne(object);
 		int step = hashIndexTwo(object);
@@ -131,6 +131,6 @@ public class  SingleHashTable<T> extends SuperHash<T> implements IHashTable<T>{
 		
 		// Insert it
 		internalArray[hashIndex] = object;
-		count++;
+		entries++;
 	}
 }
