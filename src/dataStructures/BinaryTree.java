@@ -1,6 +1,6 @@
 package dataStructures;
 
-public class BinaryTree<T> {
+public class BinaryTree<T extends Comparable<T>> {
 	// root node of the tree
 	Node<T> root;
 	
