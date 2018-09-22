@@ -1,5 +1,7 @@
 package dataStructures;
 
+// Methods based off HackerRank
+
 public class Node<T extends Comparable<T>> {
 	
 	T key;
