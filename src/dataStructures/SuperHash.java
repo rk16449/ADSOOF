@@ -3,14 +3,13 @@ package dataStructures;
 public abstract class SuperHash<T> {
 
 	// counts how many entries are filled
-	protected int count;
+	protected int entries;
 
 	// lets us know the array size
 	protected int arraySize;
 
 	// stores the type
 	protected Class<T> internalType;
-		
 
 	// returns the next available prime number
 	protected int getNextPrime(int size) {
@@ -37,32 +36,32 @@ public abstract class SuperHash<T> {
 		// Must be prime
 		return true;
 	}
-	
+
 	// our ideal index
 	protected int hashIndexOne(T object) {
 		return hash(object);
 	}
-	
+
 	protected int hashIndexTwo(T object) {
 		return 7 - hash(object) % 7;
 	}
-	
+
 	protected int hash(T object) {
 		int hashVal = object.hashCode() % arraySize;
-		if(hashVal < 0) hashVal += arraySize;
+		if (hashVal < 0)
+			hashVal += arraySize;
 		return hashVal;
 	}
-	
-	
+
 	protected int getArraySize() {
 		return this.arraySize;
 	}
-	
-	protected int getCount() {
-		return this.count;
+
+	protected int getEntries() {
+		return this.entries;
 	}
-	
-	protected Class<T> getType(){
+
+	protected Class<T> getType() {
 		return internalType;
 	}
 
