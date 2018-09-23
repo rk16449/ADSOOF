@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
 
-public class Solution {
+public class HourGlassSum {
 
 	// Complete the hourglassSum function below.
 	static int hourglassSum(int[][] arr) {
@@ -65,8 +65,7 @@ public class Solution {
 	private static final Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) throws IOException {
-		//BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
-
+		
 		int[][] arr = new int[6][6];
 		
 		for (int i = 0; i < 6; i++) {
@@ -80,11 +79,8 @@ public class Solution {
 		}
 		
 		int result = hourglassSum(arr);
-
-		//bufferedWriter.write(String.valueOf(result));
-		//bufferedWriter.newLine();
-
-		//bufferedWriter.close();
+		
+		System.out.println("Highest hourglass sum is: " + result);
 
 		scanner.close();
 	}
