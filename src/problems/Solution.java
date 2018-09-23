@@ -13,7 +13,8 @@ public class Solution {
 	// Complete the hourglassSum function below.
 	static int hourglassSum(int[][] arr) {
 		
-		int highestSum = 0;
+		// So it works with negatives as well
+		int highestSum = Integer.MIN_VALUE;
 		
 		// Subset placeholder values
 		int[][] subset = new int[][]{
@@ -29,11 +30,6 @@ public class Solution {
             	
             	// Check that we have enough columns and rows from here
             	if( ((row + 2) < arr.length) && ((col + 2) < arr.length)){
-            		
-            		System.out.print(arr[row][col] + "\t");
-            		
-            		// Manually looks like this;
-            		
             		// Manual subset:
             		subset[0][0] = arr[row][col];
             		subset[0][1] = arr[row][col+1];
@@ -44,19 +40,13 @@ public class Solution {
             		subset[2][2] = arr[row+2][col+2];
             		
             		// Pass this subset into a method
-            		
             		if(calcSum(subset) > highestSum) {
             			highestSum = calcSum(subset);
             		}
-            		
-            		
             	}
             }
-            System.out.println();
         }
-		
-		System.out.println("Highest sum is: " + highestSum);
-		
+	
 		return highestSum;
 	}
 	
@@ -78,8 +68,6 @@ public class Solution {
 		//BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
 		int[][] arr = new int[6][6];
-		
-	
 		
 		for (int i = 0; i < 6; i++) {
 			String[] arrRowItems = scanner.nextLine().split(" ");
