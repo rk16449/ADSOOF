@@ -65,8 +65,15 @@ public class ReverseLinkedList {
      *
      */
     static SinglyLinkedListNode reverse(SinglyLinkedListNode head) {
-    	return null;
+    	if(head.next == null) {
+    		return head;
+    	}
+    	SinglyLinkedListNode node = reverse(head.next);
+    	head.next.next = head;
+    	head.next = null;
+    	return node;
     }
+    
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
