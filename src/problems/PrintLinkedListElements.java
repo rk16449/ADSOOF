@@ -53,7 +53,9 @@ public class PrintLinkedListElements {
      *
      */
     static void printLinkedList(SinglyLinkedListNode head) {
-
+    	for(SinglyLinkedListNode ptr = head; ptr !=null; ptr = ptr.next) {
+    		System.out.println(ptr.data);
+    	}
 
     }
     private static final Scanner scanner = new Scanner(System.in);
