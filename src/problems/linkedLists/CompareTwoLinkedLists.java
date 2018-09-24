@@ -1,14 +1,12 @@
-package problems;
+package problems.linkedLists;
 
 import java.io.*;
 import java.math.*;
-import java.security.*;
 import java.text.*;
 import java.util.*;
-import java.util.concurrent.*;
 import java.util.regex.*;
 
-public class ReverseLinkedList {
+public class CompareTwoLinkedLists {
 
     static class SinglyLinkedListNode {
         public int data;
@@ -53,7 +51,7 @@ public class ReverseLinkedList {
             }
         }
     }
-    // Complete the reverse function below.
+    // Complete the compareLists function below.
 
     /*
      * For your reference:
@@ -64,16 +62,17 @@ public class ReverseLinkedList {
      * }
      *
      */
-    static SinglyLinkedListNode reverse(SinglyLinkedListNode head) {
-    	if(head.next == null) {
-    		return head;
+    static boolean compareLists(SinglyLinkedListNode head1, SinglyLinkedListNode head2) {
+    	
+        // if we have nodes, loop through them
+    	while((head1 != null && head2 != null) && (head1.data == head2.data)) {
+    		head1 = head1.next;
+    		head2 = head2.next;
     	}
-    	SinglyLinkedListNode node = reverse(head.next);
-    	head.next.next = head;
-    	head.next = null;
-    	return node;
+
+    	// compare heads
+    	return head1 == head2;
     }
-    
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
@@ -83,21 +82,33 @@ public class ReverseLinkedList {
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
         for (int testsItr = 0; testsItr < tests; testsItr++) {
-            SinglyLinkedList llist = new SinglyLinkedList();
+            SinglyLinkedList llist1 = new SinglyLinkedList();
 
-            int llistCount = scanner.nextInt();
+            int llist1Count = scanner.nextInt();
             scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-            for (int i = 0; i < llistCount; i++) {
-                int llistItem = scanner.nextInt();
+            for (int i = 0; i < llist1Count; i++) {
+                int llist1Item = scanner.nextInt();
                 scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-                llist.insertNode(llistItem);
+                llist1.insertNode(llist1Item);
+            }
+          
+          	SinglyLinkedList llist2 = new SinglyLinkedList();
+
+            int llist2Count = scanner.nextInt();
+            scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+            for (int i = 0; i < llist2Count; i++) {
+                int llist2Item = scanner.nextInt();
+                scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+                llist2.insertNode(llist2Item);
             }
 
-            SinglyLinkedListNode llist1 = reverse(llist.head);
+            boolean result = compareLists(llist1.head, llist2.head);
 
-            printSinglyLinkedList(llist1, " ", bufferedWriter);
+            bufferedWriter.write(String.valueOf(result ? 1 : 0));
             bufferedWriter.newLine();
         }
 

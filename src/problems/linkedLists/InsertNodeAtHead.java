@@ -1,4 +1,4 @@
-package problems;
+package problems.linkedLists;
 
 import java.io.*;
 import java.math.*;
