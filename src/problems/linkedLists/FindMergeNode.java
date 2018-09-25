@@ -65,7 +65,30 @@ public class FindMergeNode {
      *
      */
     static int findMergeNode(SinglyLinkedListNode head1, SinglyLinkedListNode head2) {
-    	return null;
+    	
+    	
+    	// Loop through both lists until we get the same node comparison
+    	SinglyLinkedListNode ptr1 = head1, ptr2 = head2;
+    	
+    	// Loop through the first node, and then check this node with all other head2 nodes
+    	while(ptr1 != null) {
+    		
+    		ptr2 = head2;
+    		while(ptr2 != null) {
+    			
+    			// If there's a match, return the data
+    			if(ptr1 == ptr2) {
+    				return ptr1.data;
+    			}
+    			
+    			ptr2 = ptr2.next;
+    		}
+    		
+    		ptr1 = ptr1.next;
+    	}
+    	
+    	// No match
+    	return 0;
     }
     
     private static final Scanner scanner = new Scanner(System.in);
