@@ -13,8 +13,17 @@ public class LeftRot {
     // Much cleaner, simpler code (learn this)
     static int[] rotLeft(int[] a, int d) {
     	d %= a.length;
+    	
+    	System.out.println("value of d is now: " + d);
+    	
         int[] ret = new int[a.length];
         for(int i = 0; i < a.length; ++i) {
+        	
+        	System.out.println("i is: " + i);
+        	System.out.println("d is: " + d);
+        	System.out.println("i+d is: " + (i+d));
+        	System.out.println("(i+d) % a.length is: " + ((i+ d) % a.length));
+        	
             ret[i] = a[(i + d) % a.length];
         }
         return ret;
@@ -23,9 +32,7 @@ public class LeftRot {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
-
-        String[] nd = scanner.nextLine().split(" ");
+    	String[] nd = scanner.nextLine().split(" ");
 
         int n = Integer.parseInt(nd[0]);
 
@@ -42,19 +49,7 @@ public class LeftRot {
         }
 
         int[] result = rotLeft(a, d);
-
-        for (int i = 0; i < result.length; i++) {
-            bufferedWriter.write(String.valueOf(result[i]));
-
-            if (i != result.length - 1) {
-                bufferedWriter.write(" ");
-            }
-        }
-
-        bufferedWriter.newLine();
-
-        bufferedWriter.close();
-
+        
         scanner.close();
     }
 }
