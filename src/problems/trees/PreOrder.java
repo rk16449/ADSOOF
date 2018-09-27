@@ -29,6 +29,12 @@ class Node {
 
     public static void preOrder(Node root) {
 
+    	// print out the binary tree down the left, then back up, then go to the right, if null go back up
+    	
+    	if(root == null) return;
+    	System.out.println(root.data);
+    	preOrder(root.left);
+    	preOrder(root.right);
     }
 	public static Node insert(Node root, int data) {
         if(root == null) {
