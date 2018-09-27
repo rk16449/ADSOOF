@@ -15,13 +15,26 @@ class BinaryTreeInsert {
 		preOrder(root.right);
 
 	}
-	
+
 	/*
 	 * Node is defined as : class Node int data; Node left; Node right;
 	 * 
 	 */
 	public static Node insert(Node root, int data) {
 
+		// empty node created, return a new Node and go back up the stack
+		if(root == null) return new Node(data);
+		
+		// less than value found
+		if(data < root.data) {
+			root.left = insert(root.left, data);
+		}else {
+			// greater than value
+			root.right = insert(root.right, data);
+		}
+		
+		// return the root
+		return root;
 	}
 
 	public static void main(String[] args) {
