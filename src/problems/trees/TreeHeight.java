@@ -7,8 +7,23 @@ class TreeHeight {
 	 * class Node int data; Node left; Node right;
 	 */
 	public static int height(Node root) {
+		
+		int count = 0, countLeft = 0, countRight = 0;
+		
+		// base case
+		if(root == null) return count;
+
+		countLeft = 1 + height(root.left);
+		
+		countRight = 1 + height(root.right);
+
+		
+		if(countLeft > countRight) {
+			return countLeft;
+		}
+		
 		// Write your code here.
-		return 0;
+		return countRight;
 	}
 
 	public static Node insert(Node root, int data) {
